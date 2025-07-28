@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower
+    environment:
+      - WATCHTOWER_NOTIFICATIONS=shoutrrr
+      - WATCHTOWER_NOTIFICATION_SKIP_TITLE=True
+      - WATCHTOWER_NOTIFICATION_URL=
+        ntfy://eoghan:${PASSWORD}@ntfy.bytemeupscotty.online/services?title=WatchtowerUpdates
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+networks: {}
