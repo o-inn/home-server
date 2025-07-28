@@ -1,0 +1,16 @@
+version: "3.3"
+services:
+  fing-agent:
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 44444:44444
+    restart: always
+    container_name: FingAgent
+    volumes:
+      - /opt/stacks/fing:/app/fingdata
+    image: fing/fing-agent:latest
+volumes:
+  fing-data-volume: {}
+networks: {}
