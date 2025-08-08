@@ -2,9 +2,8 @@ services:
   postgres:
     image: docker.io/library/postgres:16.2
     container_name: authentik-db
-    environment:
-      POSTGRES_USER=${POSTGRES_USER:-authentik}
-      POSTGRES_PASSWORD=${POSTGRES_PASSWORD:?error}
+    environment: POSTGRES_USER=${POSTGRES_USER:-authentik}
+      POSTGRES_PASSWORD=${PG_PASS:?error}
       POSTGRES_DB=${POSTGRES_DB:-authentik}
     healthcheck:
       test:
@@ -39,9 +38,9 @@ services:
     environment:
       - AUTHENTIK_REDIS__HOST=authentik-redis
       - AUTHENTIK_POSTGRESQL__HOST=authentik-db
-      - AUTHENTIK_POSTGRESQL__USER=${POSTGRES_USER:-authentik}
+      - AUTHENTIK_POSTGRESQL__USER=${PG_USER}
       - AUTHENTIK_POSTGRESQL__NAME=${POSTGRES_DB:-authentik}
-      - AUTHENTIK_POSTGRESQL__PASSWORD=${POSTGRES_PASSWORD:?error}
+      - AUTHENTIK_POSTGRESQL__PASSWORD=${PG_PASS:?error}
       - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY:?error}
       # (Optional)  Enable Error Reporting
       # - AUTHENTIK_ERROR_REPORTING__ENABLED=${AUTHENTIK_ERROR_REPORTING:-false}
@@ -71,9 +70,9 @@ services:
     environment:
       - AUTHENTIK_REDIS__HOST=authentik-redis
       - AUTHENTIK_POSTGRESQL__HOST=authentik-db
-      - AUTHENTIK_POSTGRESQL__USER=${POSTGRES_USER:-authentik}
+      - AUTHENTIK_POSTGRESQL__USER=${PG_USER}
       - AUTHENTIK_POSTGRESQL__NAME=${POSTGRES_DB:-authentik}
-      - AUTHENTIK_POSTGRESQL__PASSWORD=${POSTGRES_PASSWORD:?error}
+      - AUTHENTIK_POSTGRESQL__PASSWORD=${PG_PASS:?error}
       - AUTHENTIK_SECRET_KEY=${AUTHENTIK_SECRET_KEY:?error}
       # (Optional)  Enable Error Reporting
       # - AUTHENTIK_ERROR_REPORTING__ENABLED=${AUTHENTIK_ERROR_REPORTING:-false}

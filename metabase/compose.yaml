@@ -4,4 +4,6 @@ services:
       - 3251:3000
     container_name: metabase
     image: metabase/metabase
-networks: {}
+networks:
+  postgress_default:
+    external: true

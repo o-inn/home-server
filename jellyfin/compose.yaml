@@ -1,0 +1,15 @@
+services:
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    network_mode: host
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      # Optional - use if you want Jellyfin to advertise itself under a public URL
+      # - JELLYFIN_PublishedServerUrl=http://your.public.domain
+    volumes:
+      - /opt/stacks/jellyfin/config:/config
+      - /home/eoghan/cachecow:/media
+    restart: unless-stopped

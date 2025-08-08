@@ -11,4 +11,6 @@ services:
       - .opt/stacks/postgres:/var/lib/postgresql/data
     ports:
       - 5432:5432
-networks: {}
+networks:
+  metabase_default:
+    external: true
